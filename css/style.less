@@ -1,0 +1,297 @@
+@font-face {
+	font-family: "Akrobat-Black";
+	src: url("../fonts/Akrobat/Akrobat-Black/Akrobat-Black.eot");
+	src: url("../fonts/Akrobat/Akrobat-Black/Akrobat-Black.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/Akrobat/Akrobat-Black/Akrobat-Black.woff") format("woff2"),
+	url("../fonts/Akrobat/Akrobat-Black/Akrobat-Black.woff") format("woff"),
+	url("../fonts/Akrobat/Akrobat-Black/Akrobat-Black.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Akrobat-Bold";
+	src: url("../fonts/Akrobat/Akrobat-Bold/Akrobat-Bold.eot");
+	src: url("../fonts/Akrobat/Akrobat-Bold/Akrobat-Bold.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/Akrobat/Akrobat-Bold/Akrobat-Bold.woff") format("woff2"),
+	url("../fonts/Akrobat/Akrobat-Bold/Akrobat-Bold.woff") format("woff"),
+	url("../fonts/Akrobat/Akrobat-Bold/Akrobat-Bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Akrobat-Regular";
+	src: url("../fonts/Akrobat/Akrobat-Regular/Akrobat-Regular.eot");
+	src: url("../fonts/Akrobat/Akrobat-Regular/Akrobat-Regular.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/Akrobat/Akrobat-Regular/Akrobat-Regular.woff") format("woff2"),
+	url("../fonts/Akrobat/Akrobat-Regular/Akrobat-Regular.woff") format("woff"),
+	url("../fonts/Akrobat/Akrobat-Regular/Akrobat-Regular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Akrobat-Light";
+	src: url("../fonts/Akrobat/Akrobat-Light/Akrobat-Light.eot");
+	src: url("../fonts/Akrobat/Akrobat-Light/Akrobat-Light.eot?#iefix")format("embedded-opentype"),
+	url("../fonts/Akrobat/Akrobat-Light/Akrobat-Light.woff") format("woff2"),
+	url("../fonts/Akrobat/Akrobat-Light/Akrobat-Light.woff") format("woff"),
+	url("../fonts/Akrobat/Akrobat-Light/Akrobat-Light.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+/* 
+Variables
+*/
+@mobile: 320px;
+@tablet: 768px;
+@desctop: 1680px;
+
+@brown: #141414;
+@rose: #DF1D59;
+@red: #DF1D59;
+
+/* 
+ Mixins
+ */
+ .background-mix{
+ 	background-position: center center;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ }
+ .image-width{
+ 	width: 100%;
+ }
+ .font-style{
+ 	text-align: center;
+ 	color: #FFFFFF;
+ }
+ .pomada{
+ 	background:url("../img/pomada.png");
+ 	.background-mix;
+ 	text-transform: uppercase;
+ 	font-family: 'Akrobat-Regular', sans-serif;
+ 	font-size: 2.9vw;
+ 	.font-style;
+ 	width: 28vw;
+ 	height: 6vw;
+ 	line-height: 6vw;
+ 	max-width: 326px;
+ 	max-height: 74px;
+ 	margin: 0 auto;
+ }
+ .mix-play{
+ 	display: inline-block;
+ 	position: absolute;
+ 	top: 50%;
+ 	left: 50%;
+ 	background: url(../img/play_icon.png);
+ 	.background-mix;
+ 	&:hover {
+ 		cursor:pointer;
+ 	}
+ /*
+ Styles
+ */
+ .content{
+ 	width:100%;
+ 	max-width:1680px;
+ 	margin: 0 auto;
+ }
+ @media (max-width: @tablet) {
+ 	.content{
+ 		width:80vw;
+ 	}
+ }
+ @media (max-width: @mobile) {
+ 	.content{
+ 		width:90vw;
+ 	}
+ }
+ b{
+ 	font-weight:500;
+ }
+}
+article.video{
+	position:relative; 
+	padding-bottom: 56.25%; 
+	height: 0;
+	background: url("../img/preview.jpg");
+	.background-mix;
+
+	iframe{
+		position:absolute; 
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+	}
+	.play{
+		.mix-play;
+		width: 19vw;
+		height: 19vw;
+		top: calc(50% - 9.5vw);
+		left: calc(50% - 9.5vw);
+	}
+}
+/* About serials*/
+article.about-serial {
+	height: 0;
+	padding-bottom: 57%;
+	width: 100%;
+	display: inline-block;
+
+	.about-serial__info {
+		width: 50%;
+		float: left;
+		text-align: center;
+	}
+	.about-serial__info img{
+		width: 85%;
+		padding-top: 15%;
+	}
+	@media (max-width: @tablet) {
+		.about-serial__info img{
+			padding-bottom: 20%;
+		}
+	}
+
+	.about-serial__carousel{
+		position:relative; 
+		width: 50%;
+		display: inline-block;
+
+		.owl-nav {
+			position: absolute;
+			width: 100%;
+			top: calc(50% - 25px);
+			z-index: 9;
+
+			.owl-next, .owl-prev {
+				width: 50px;
+				height: 50px;
+				background-color: rgba(0, 0, 0, 0.5);
+				display: inline-block;
+			}
+			.owl-next {
+				float: right;
+				border-radius: 25px 0px 0px 25px;
+				margin-left:21px;
+			}
+			.owl-prev {
+				float: left;
+				border-radius: 0px 25px 25px 0;
+			}
+			.owl-prev img, .owl-next img {
+				width: 19px!important;
+				margin-top: 15px;
+				height: 17px!important;
+			}
+			.owl-next img{
+				margin-left: 21px;
+			}
+			.owl-prev img{
+				margin-left: 12px;
+			}
+ 			} //.owl-nav
+
+ 			.owl-dots {
+ 				position: relative;
+ 				bottom: 46px;
+ 				z-index: 9;
+ 				margin-left: 37%;
+ 				.owl-dot {
+ 					float: left;
+ 					margin-right: 8px;
+ 					width: 6px;
+ 					vertical-align: middle;
+ 					height: 6px;
+ 					background-color: rgba(232, 232, 232, 0.4);
+ 					border-radius: 6px;
+ 				}
+ 				.owl-dot.active {
+ 					width: 10px;
+ 					height: 10px;
+ 					margin-top: -2px;
+ 					border-radius: 10px;
+ 					background-color: #e8e8e8;
+ 					
+ 				} //owl-dots
+ 			} 
+ 			} //about-serial__carousel
+
+ 			@media (max-width: @tablet) {
+ 				.about-serial__carousel, .about-serial__info{
+ 					width: 100%;
+ 				}
+ 			}	
+
+ 			} //article .about-serial
+
+ 			/* SERIALS*/
+ 			article.serials{
+ 				background: @brown;
+ 				p {
+ 					.font-style;
+ 					font-family: 'Roboto', sans-serif;
+ 					font-weight: 300;
+ 					max-width: 411px;
+ 					line-height: 27px;
+ 					font-size: 18px;
+ 					padding-top: 76px;
+ 					margin: 0 auto;
+ 					padding-bottom: 5vw;
+ 				}
+ 				.serials_content{
+ 					width: auto;
+ 					padding-top: 4vw;
+ 					margin-left: 7vw;
+ 					margin-right: 7vw;
+ 					padding-bottom: 5vw;
+ 					display: inline-block;
+ 					position: relative;
+ 				}
+
+ 				.serials_item{
+ 					width: 46%;
+ 					padding: 2%;
+ 					float: left;
+ 					position: relative;
+ 				}
+ 				.serials_item > .play{
+ 					.mix-play;
+ 					width: 9vw;
+ 					height: 9vw;
+ 					top: calc(50% - 4.5vw);
+ 					left: calc(50% - 4.5vw);
+ 				}
+ 				.serials_item > .title{
+ 					.font-style;
+ 					text-transform:uppercase;
+ 					font-family: 'Akrobat-Regular', sans-serif;
+ 					font-size: 2.2vw;
+ 					position: absolute;
+ 					bottom: 13%;
+ 					width: 96%;
+
+ 				}
+ 				@media (max-width: @tablet) and (min-width: @mobile) {
+ 					.serials_item{
+ 						width: 100%;
+ 						padding: 4% 0;
+ 						float:none;
+ 					}
+ 					.serials_item > .play{
+ 						width: 19vw;
+ 						height: 19vw;
+ 						top: calc(50% - 9.5vw);
+ 						left: calc(50% - 9.5vw);
+ 					}
+ 					.serials_item > .title{
+ 						font-size: 4.2vw;
+ 						width: 100%;
+ 					}
+ 				}
+ 				.serials_item > .preview img{
+ 					width:100%;
+ 				}
+
+ 			}
