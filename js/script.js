@@ -7,5 +7,4 @@ document.addEventListener("DOMContentLoaded", function(){
 		"<img src='//dev-cdn.tnt-online.ru/super/img/next.png'>"
 		]
 	});
-	console.log('dsds')
 }); // DOMContentLoaded
