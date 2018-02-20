@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/font,macos,images
 
@@ -102,3 +103,25 @@ Temporary Items
 
 
 # End of https://www.gitignore.io/api/font,macos,images
+=======
+fonts/.DS_Store
+fonts/Akrobat/.DS_Store
+fonts/Akrobat/Akrobat-Black/Akrobat-Black.svg
+*.ttf
+*.woff2
+*.eot
+*.woff
+*.svg
+fonts/Akrobat/Akrobat-Black/font.css
+fonts/Akrobat/Akrobat-Bold/font.css
+fonts/Akrobat/Akrobat-ExtraBold/font.css
+fonts/Akrobat/Akrobat-ExtraLight/font.css
+fonts/Akrobat/Akrobat-Regular/font.css
+fonts/Akrobat/Akrobat-Light/font.css
+fonts/Akrobat/Akrobat-Thin/font.css
+img/.DS_Store
+*.png
+*.jpg
+img/about/.DS_Store
+.DS_Store
+>>>>>>> dev
