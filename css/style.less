@@ -698,7 +698,6 @@ div.menu {
  			} //article.heroes
  			article.voting{
  				background:@brown;
- 				display:inline-block;
  				padding-top: 76px;
  				padding-bottom: 10vw;
  				text-align: center;
@@ -714,6 +713,9 @@ div.menu {
  					padding-top: 76px;
  					margin: 0 auto;
  					padding-bottom: 5vw;
+ 					@media (max-width: @l_mobile) {
+ 					font-size: 16px;	
+ 					}
  				}
  				.vs_logo{
  					position: absolute;
@@ -724,12 +726,16 @@ div.menu {
  						width:100%;
  					}
  				}
+ 				.vs_logo.mobile{
+ 					position: relative;
+ 				}
  				.voting_items{
  					position: relative;
- 					display: block;
+ 					display: inline-block;
  					padding-bottom: 40px;
 
  					.voting_item{
+ 						position:relative;
  						width:49%;
  						display: inline-block;
  						float: left;
@@ -750,6 +756,12 @@ div.menu {
  							padding: 3vw 0;
  							span{
  								color:@rose;
+ 							}
+ 							@media (max-width: @l_mobile) {
+ 								position: absolute;
+ 								bottom: 2vw;
+ 								font-size: 4.5vw;
+ 								padding-left: 20px;
  							}
  						}
  						@media (max-width: @l_mobile) {
