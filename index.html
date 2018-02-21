@@ -19,15 +19,15 @@
 	<header class="header_top">
 		<nav>
 			<div class="content">
-				<div class="socials">
+				<div class="socials desktop">
 					<a href="https://vk.com/superkanal" target="_blank" class="social vk"></a>
 					<a href="https://www.facebook.com/tvsuper/" target="_blank" class="social fb"></a>
 					<a href="https://ok.ru/superkanal" target="_blank" class="social ok"></a>
 					<a href="https://www.instagram.com/super_kanal/" target="_blank" class="social in"></a>
 				</div>
-				<ul>
+				<ul class="desktop">
 					<li><a href="#video">Трейлер</a></li>
-					<li><a href="#video">О сериале</a></li>
+					<li><a href="#about-serial">О сериале</a></li>
 					<li><a href="#serials">Серии</a></li>
 					<li><a href="#heroes">Герои</a></li>
 					<li><a href="#voting">Голосование</a></li>
@@ -39,9 +39,48 @@
 			<img src="img/top-banner-text.png">
 		</div>
 		<img class="top-16" src="img/top-16.png">
+
+		<!-- Burger Menu -->
+		<div class="mobile">
+			<div class="burger">
+				<div class="x"></div>
+				<div class="y"></div>
+				<div class="z"></div>
+			</div>
+		</div> <!-- Burger Menu -->
 	</header>
 
+	<!-- Mobile Menu -->
+	<div class="mobile">
+		<div class="circle"></div>
+		<div class="menu">
+			<ul>
+				<li><a href="#video">Трейлер</a></li>
+				<li><a href="#about-serial">О сериале</a></li>
+				<li><a href="#serials">Серии</a></li>
+				<li><a href="#heroes">Герои</a></li>
+				<li><a href="#voting">Голосование</a></li>
+			</ul>
+			<div class="socials">
+				<a href="https://vk.com/superkanal" target="_blank" class="social vk"></a>
+				<a href="https://www.facebook.com/tvsuper/" target="_blank" class="social fb"></a>
+				<a href="https://ok.ru/superkanal" target="_blank" class="social ok"></a>
+				<a href="https://www.instagram.com/super_kanal/" target="_blank" class="social in"></a>
+			</div>
+		</div>
+
+	</div>	<!-- Mobile Menu -->
 	<article class="age40-26">
+		<div>
+			<div class="half-block age26">
+				<!--<img src="img/gg.png">-->
+			</div>
+			<div class="half-block age40">
+				<!--<img src="img/gg.png">-->
+			</div>
+			<div class="age_slider">
+			</div>
+		</div>
 	</article>
 
 	<article class="video" id="video">
@@ -97,7 +136,7 @@
 			<div class="heroes__col"><img src="img/heroes1.png"></div>
 			<div class="heroes__col"></div>
 		</div>-->
-		<div class="desctop block-image content">
+		<div class="desktop block-image content">
 			<img src="img/heroes.png">
 		</div>
 		<div class="mobile heroes-carousel owl-carousel">
@@ -112,9 +151,29 @@
 	</article>
 
 	<article class="voting">
+		<div class="content">
+			<header class="pomada">Голосование</header>
+			<p>Лиза не может определиться, кто больше ей подходит - эксцентричный <b>Джош</b> или сдержанный <b>Чарльз</b>. Нам выбор кажется очевидным.</p>
+			<div class="voting_items">
+				<div class="voting_item">
+					<img src="img/voting1.jpg">
+					<div>Команда<span class="rose"> #</span>Джош</div>
+				</div>
+
+				<div class="voting_item">
+					<img src="img/voting2.jpg">
+					<div>Команда<span class="rose"> #</span>Чарльз</div>
+				</div>
+				<div class="vs_logo"><img src="img/vs_logo.png"></div>
+			</div>
+		</div>
 	</article>
 
 	<footer>
+		<div class="center">
+			<a class="logo" href="http://superkanal.ru" target="_blank">супер<img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"></a>
+			<span>@ 2018. Все права защищены</span>
+		</div>
 	</footer>
 
 </body>
