@@ -557,7 +557,7 @@ div.menu {
 
     article.age40-26{
     	width:100%;
-    	div:first-child{
+    	div.full_block{
     		height: 300px;
     		position: relative;
     	}
@@ -566,21 +566,29 @@ div.menu {
     		height:100%;
     		display:inline-block;
     		float:left;
+    		position:absolute;
     	}
     	.half-block.age26{
     		background:#000;
+    		width:50%;
+    		z-index: 3;
     	}
     	.half-block.age40{
     		background:#ddd;
+    		width: 100%;
     	}
     	.age_slider{
     		position: absolute;
     		width:30px;
     		height:30px;
     		border-radius:30px;
-    		left: calc(50% - 15px);
+    		left: calc(100% - 15px);
     		top: calc(50% - 15px);
     		background:#FFF;
+    		z-index:4;
+    		&:hover{
+    			cursor:move;
+    		}
     	}
     }
     article.video{
@@ -821,6 +829,7 @@ div.menu {
  							background: transparent;
  							display: none;
  							.transition;
+ 							
  							@media (max-width: @l_mobile) {
  								display:block;
  								width: 60px;

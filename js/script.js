@@ -79,6 +79,62 @@ window.onload = function() {
 	// Show text-topbanner
    $('.top-banner_text').fadeTo( "slow" , 1);
 
+/* 
+Перетаскивание в блоке с возрастом
+*/
+var ageBlock26 = document.querySelector('.age26'); 
+var ageSlider = document.querySelector('.age_slider');
+var delta_w = 0; // Изменение блока возраста26 по ширине
+
+ageSlider.addEventListener("mousedown", saveWH); // Ставим обработку на нажатие кнопки мыши
+document.addEventListener("mouseup", clearXY);  // Ставим обработку на отпускание кнопки мыши
+
+/* Функция для получения текущих координат курсора мыши */
+function getXY(event) {
+	if (event) {
+		x = event.pageX;
+		y = event.pageY;
+		console.log(x, y, 'getXY');
+	}
+	else {
+		x = window.event.clientX;
+		y = window.event.clientY;
+	}
+	return new Array(x, y);
+}
+
+function saveWH(event) {
+	var point = getXY(event);
+    w_ageBlock26 = ageBlock26.clientWidth; // Текущая ширина блока
+    console.log(w_ageBlock26, 'Текущая ширина блока');
+    delta_w = w_ageBlock26 - point[0]; // Измеряем текущую разницу между шириной и x-координатой мыши
+    console.log(point[0])
+    console.log(delta_w, 'Дельта');  
+
+   //Ставим обработку движения мыши для разных браузеров 
+   document.addEventListener("mousemove", resizeBlock);
+    return false; // Отключаем стандартную обработку нажатия мыши 
+}
+/* Функция для измерения ширины окна */
+function clientWidth() {
+	return document.documentElement.clientWidth == 0 ? document.body.clientWidth : document.documentElement.clientWidth;
+}
+
+function resizeBlock(event) {
+	var point = getXY(event);
+
+    new_w_ageBlock26 = delta_w + point[0]; // Изменяем новое приращение по ширине
+    ageBlock26.style.width = new_w_ageBlock26 + "px"; // Устанавливаем новую ширину блока
+    // Если блок выходит за пределы экрана, то устанавливаем максимальные значения для ширины и высоты 
+    if (ageBlock26.offsetLeft + ageBlock26.clientWidth > clientWidth()) ageBlock26.style.width = (clientWidth() - ageBlock26.offsetLeft)  + "px";
+}
+
+// При отпускании кнопки мыши отключаем обработку движения курсора мыши 
+function clearXY(event){
+	document.removeEventListener("mousemove", resizeBlock);
+}
+//Перетаскивание в блоке с возрастом
+
 }; // window.onload
 
 
