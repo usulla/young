@@ -58,6 +58,24 @@ Variables
 /* 
  Mixins
  */
+ .keyframes(@name; @arguments) {
+ 	@-moz-keyframes @name { @arguments(); }
+ 	@-webkit-keyframes @name { @arguments(); }
+ 	@keyframes @name { @arguments(); }
+ }
+
+ .animation(@arguments) {
+ 	-webkit-animation: @arguments;
+ 	-moz-animation: @arguments;
+ 	animation: @arguments;
+ }
+ .transition(@property: all, @duration: 0.3s, @function: linear) {
+ 	-webkit-transition: @arguments;
+ 	-moz-transition: @arguments;
+ 	-o-transition: @arguments;
+ 	transition: @arguments;
+ }
+
  .background-mix{
  	background-position: center center;
  	background-repeat: no-repeat;
@@ -75,14 +93,23 @@ Variables
  	.background-mix;
  	text-transform: uppercase;
  	font-family: 'Akrobat-Regular', sans-serif;
- 	font-size: 2.9vw;
+ 	font-size: 40px;
  	.font-style;
- 	width: 28vw;
- 	height: 6vw;
- 	line-height: 6vw;
- 	max-width: 326px;
- 	max-height: 74px;
+ 	width: 345px;
+ 	height: 84px;
+ 	max-width: 345px;
+ 	max-height: 84px;
+ 	line-height:84px;
  	margin: 0 auto;
+
+ 	@media (max-width: @l_mobile) {
+ 		font-size: 30px;
+ 		width: 300px;
+ 		height: 74px;
+ 		max-width: 326px;
+ 		max-height: 74px;
+ 		line-height:74px;
+ 	}
  }
  .mix-play{
  	display: inline-block;
@@ -282,6 +309,7 @@ body > header{
 		font-size: 1.8vw;
 		text-decoration: none;
 		opacity: 0.7;
+		.transition;  
 	}
 
     // Burger-menu for mobile
@@ -383,19 +411,26 @@ body > header{
     	width: 20vw;
     	margin: 0 auto;
     	max-width: 384px;
-    	img{
-    		width:100%;
+    	opacity:0;
+    	/*.keyframes (logoshow; {
+    		from {opacity: 0;}
+    		to {opacity: 1;}
+    		});
+    		.animation(logoshow 0.9s linear); */
+
+    		img{
+    			width:100%;
+    		}
+    		@media (min-width: @l_mobile + 1) and (max-width: @tablet){
+    			width: 35vw;
+    		}
+    		@media (min-width: @mobile + 1) and (max-width: @l_mobile){
+    			width: 55vw;
+    		}
+    		@media (max-width: @mobile){
+    			width: 75vw;
+    		}
     	}
-    	@media (min-width: @l_mobile + 1) and (max-width: @tablet){
-    		width: 35vw;
-    	}
-    	@media (min-width: @mobile + 1) and (max-width: @l_mobile){
-    		width: 55vw;
-    	}
-    	@media (max-width: @mobile){
-    		width: 75vw;
-    	}
-    }
 } // header
 
 // Mobile menu
@@ -522,7 +557,7 @@ div.menu {
 
     article.age40-26{
     	width:100%;
-    	div:first-child{
+    	div.full_block{
     		height: 300px;
     		position: relative;
     	}
@@ -531,21 +566,29 @@ div.menu {
     		height:100%;
     		display:inline-block;
     		float:left;
+    		position:absolute;
     	}
     	.half-block.age26{
     		background:#000;
+    		width:50%;
+    		z-index: 3;
     	}
     	.half-block.age40{
     		background:#ddd;
+    		width: 100%;
     	}
     	.age_slider{
     		position: absolute;
     		width:30px;
     		height:30px;
     		border-radius:30px;
-    		left: calc(50% - 15px);
+    		left: calc(100% - 15px);
     		top: calc(50% - 15px);
     		background:#FFF;
+    		z-index:4;
+    		&:hover{
+    			cursor:move;
+    		}
     	}
     }
     article.video{
@@ -698,7 +741,6 @@ div.menu {
  			} //article.heroes
  			article.voting{
  				background:@brown;
- 				display:inline-block;
  				padding-top: 76px;
  				padding-bottom: 10vw;
  				text-align: center;
@@ -714,6 +756,9 @@ div.menu {
  					padding-top: 76px;
  					margin: 0 auto;
  					padding-bottom: 5vw;
+ 					@media (max-width: @l_mobile) {
+ 						font-size: 16px;	
+ 					}
  				}
  				.vs_logo{
  					position: absolute;
@@ -724,25 +769,34 @@ div.menu {
  						width:100%;
  					}
  				}
+ 				.vs_logo.mobile{
+ 					position: relative;
+ 				}
  				.voting_items{
  					position: relative;
- 					display: block;
+ 					display: inline-block;
  					padding-bottom: 40px;
 
  					.voting_item{
- 						width:49%;
+ 						position:relative;
+ 						width:48.5%;
  						display: inline-block;
  						float: left;
+
  						&:nth-child(1){
- 							margin-right:1%;
+ 							margin-right:1.5%;
  						}
  						&:nth-child(2){
- 							margin-left:1%;
+ 							margin-left:1.5%;
  						}
- 						> img{
- 							width:100%;
+ 						> div.image_block{
+ 							position:relative;
+
+ 							> img{
+ 								width:100%;
+ 							}
  						}
- 						> div{
+ 						> div.title_member{
  							.font-style;
  							text-transform:uppercase;
  							font-family: 'Akrobat-Regular', sans-serif;
@@ -751,13 +805,94 @@ div.menu {
  							span{
  								color:@rose;
  							}
+ 							@media (max-width: @l_mobile) {
+ 								position: absolute;
+ 								bottom: 2vw;
+ 								font-size: 4.5vw;
+ 								padding-left: 20px;
+ 							}
  						}
  						@media (max-width: @l_mobile) {
  							width:100%;
  						}
- 					}
+
+ 						button{
+ 							position:absolute;
+ 							top: calc(50% - 30px);
+ 							left: calc(50% - 150px);
+ 							border: 3px solid @rose;
+ 							box-sizing: border-box;
+ 							border-radius: 35px;
+ 							width: 300px;
+ 							height: 60px;
+ 							margin:0 auto;
+ 							background: transparent;
+ 							display: none;
+
+ 							@media (max-width: @l_mobile) {
+ 								display:block;
+ 								width: 60px;
+ 								height: 60px;
+ 								right: 20px;
+ 								margin: 0;
+ 								bottom: 3vw;
+ 								left: auto;
+ 								top: auto;
+ 							}
+ 							@media (max-width: @mobile) {
+ 								display:block;
+ 								width: 40px;
+ 								height: 40px;
+ 								right: 10px;
+ 								margin: 0;
+ 								bottom: 3vw;
+ 								left: auto;
+ 								top: auto;
+ 							}
+ 							> span{
+ 								@media (max-width: @l_mobile) {
+ 									display: none;
+ 								}
+ 							}
+ 							&:hover{
+ 								cursor:pointer;
+ 								background:@rose;
+ 							}
+ 							> img{
+ 								width: 24px;
+ 								vertical-align: middle;
+ 								margin-top: -7px;
+ 								margin-right: 7px;
+ 								@media (max-width: @l_mobile) {
+ 									margin-right: 0;
+ 								}
+ 								@media (max-width: @mobile) {
+ 									width: 17px;
+ 									margin-top: -17px;
+ 									margin-right: 0;
+ 								}
+ 							}
+ 							.font-style;
+ 							font-family: 'Roboto', sans-serif;
+ 							font-weight: 500;
+ 							font-size: 20px;
+ 							line-height: 45px;
+ 							vertical-align: middle;
+ 						} //button
+
+
+ 						&:hover button{
+ 							display: block;
+ 						}
+ 					} //voting-item
 
  				}
+
+ 				.voting_result{
+ 					background:@rose;
+ 					height:500px;
+ 					width:100%;
+ 			    }//.voting_result
  			} // article.voting
  			footer{
  				background:@brown;
@@ -792,4 +927,11 @@ div.menu {
  					opacity: 0.5;
  					display: block;
  				}
+ 			}
+ 			/* Vue.js */
+ 			.voting-enter-active, .voting-leave-active {
+ 				transition: opacity 1.0s;
+ 			}
+ 			.voting-enter, .voting-leave-to {
+ 				opacity: 0;
  			}
