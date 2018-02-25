@@ -105,29 +105,31 @@
 	</article>
 
 	<article class="serials">
-		<p>Смотрите первый сезон киносериала "Юная" с 20 марта с понедельника по четверг в  <b>22:00</b> на <b>супер!</b>
-		</p>
-		<header class="pomada">Серии</header>
-		<div class="serials_content content">
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 1</span>
-				<span class="play"></span>
-			</div>
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 2</span>
-				<span class="play"></span>
-			</div>
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 3</span>
-				<span class="play"></span>
-			</div>
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 4</span>
-				<span class="play"></span>
+		<div class="content">
+			<p>Смотрите первый сезон киносериала "Юная" с 20 марта с понедельника по четверг в  <b>22:00</b> на <b>супер!</b>
+			</p>
+			<header class="pomada">Серии</header>
+			<div class="serials_content content">
+				<div class="serials_item">
+					<div class="preview"><img src="img/preview.jpg"></div>
+					<span class="title">Серия 1</span>
+					<span class="play"></span>
+				</div>
+				<div class="serials_item">
+					<div class="preview"><img src="img/preview.jpg"></div>
+					<span class="title">Серия 2</span>
+					<span class="play"></span>
+				</div>
+				<div class="serials_item">
+					<div class="preview"><img src="img/preview.jpg"></div>
+					<span class="title">Серия 3</span>
+					<span class="play"></span>
+				</div>
+				<div class="serials_item">
+					<div class="preview"><img src="img/preview.jpg"></div>
+					<span class="title">Серия 4</span>
+					<span class="play"></span>
+				</div>
 			</div>
 		</div>
 	</article>
@@ -157,10 +159,11 @@
 			<p>Лиза не может определиться, кто больше ей подходит - эксцентричный <b>Джош</b> или сдержанный <b>Чарльз</b>. Нам выбор кажется очевидным.</p>
 
 			<!-- Voting first block -->
-			<div class="voting_items">
+			
+			<div class="voting_items" v-if="showVoting">
 				<div class="voting_item">
 					<div class="image_block">
-						<button><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
+						<button v-on:click="showVoting = false, showResult = true"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
 						<img src="img/voting1.jpg">
 					</div>
 					<div class="title_member">Команда<span class="rose"> #</span>Джош</div>
@@ -170,7 +173,7 @@
 
 				<div class="voting_item">
 					<div class="image_block">
-						<button><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
+						<button v-on:click="showResult = true, showVoting = false"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
 						<img src="img/voting2.jpg">
 					</div>
 					<div class="title_member">Команда<span class="rose"> #</span>Чарльз</div>
@@ -179,9 +182,19 @@
 				<div class="vs_logo desktop"><img src="img/vs_logo.png"></div>
 			</div> <!-- Voting first block -->
 
-			<div class="voting_result">
-
-			</div>
+			<transition name="voting">
+				<div class="voting_result" v-if="showResult">
+				</div>
+			</transition>
+			<script>
+				var seenVoting = new Vue({
+					el: '.voting',
+					data: {
+						showVoting: true,
+						showResult: false
+					}
+				})
+			</script>
 		</div>
 	</article>
 

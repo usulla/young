@@ -58,6 +58,24 @@ Variables
 /* 
  Mixins
  */
+ .keyframes(@name; @arguments) {
+ 	@-moz-keyframes @name { @arguments(); }
+ 	@-webkit-keyframes @name { @arguments(); }
+ 	@keyframes @name { @arguments(); }
+ }
+
+ .animation(@arguments) {
+ 	-webkit-animation: @arguments;
+ 	-moz-animation: @arguments;
+ 	animation: @arguments;
+ }
+ .transition(@property: all, @duration: 0.3s, @function: linear) {
+ 	-webkit-transition: @arguments;
+ 	-moz-transition: @arguments;
+ 	-o-transition: @arguments;
+ 	transition: @arguments;
+ }
+
  .background-mix{
  	background-position: center center;
  	background-repeat: no-repeat;
@@ -291,6 +309,7 @@ body > header{
 		font-size: 1.8vw;
 		text-decoration: none;
 		opacity: 0.7;
+		.transition;
 	}
 
     // Burger-menu for mobile
@@ -392,19 +411,26 @@ body > header{
     	width: 20vw;
     	margin: 0 auto;
     	max-width: 384px;
-    	img{
-    		width:100%;
+    	opacity:0;
+    	/*.keyframes (logoshow; {
+    		from {opacity: 0;}
+    		to {opacity: 1;}
+    		});
+    		.animation(logoshow 0.9s linear); */
+
+    		img{
+    			width:100%;
+    		}
+    		@media (min-width: @l_mobile + 1) and (max-width: @tablet){
+    			width: 35vw;
+    		}
+    		@media (min-width: @mobile + 1) and (max-width: @l_mobile){
+    			width: 55vw;
+    		}
+    		@media (max-width: @mobile){
+    			width: 75vw;
+    		}
     	}
-    	@media (min-width: @l_mobile + 1) and (max-width: @tablet){
-    		width: 35vw;
-    	}
-    	@media (min-width: @mobile + 1) and (max-width: @l_mobile){
-    		width: 55vw;
-    	}
-    	@media (max-width: @mobile){
-    		width: 75vw;
-    	}
-    }
 } // header
 
 // Mobile menu
@@ -794,6 +820,7 @@ div.menu {
  							margin:0 auto;
  							background: transparent;
  							display: none;
+ 							.transition;
  							@media (max-width: @l_mobile) {
  								display:block;
  								width: 60px;
@@ -892,4 +919,11 @@ div.menu {
  					opacity: 0.5;
  					display: block;
  				}
+ 			}
+ 			/* Vue.js */
+ 			.voting-enter-active, .voting-leave-active {
+ 				transition: opacity 1.0s;
+ 			}
+ 			.voting-enter, .voting-leave-to {
+ 				opacity: 0;
  			}

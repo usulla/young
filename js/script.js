@@ -76,5 +76,10 @@ window.onload = function() {
 	var marginTopBannerText = (heightHeader - heightBannerText - 80) / 2;
 	console.log(heightHeader, heightBannerText, marginTopBannerText);
 	document.querySelector('.top-banner_text').style.marginTop = marginTopBannerText + 'px';
+	// Show text-topbanner
+   $('.top-banner_text').fadeTo( "slow" , 1);
+
 }; // window.onload
+
+
 
