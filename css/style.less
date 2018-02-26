@@ -125,6 +125,8 @@ Variables
  	.background-mix;
  	&:hover {
  		cursor:pointer;
+ 		background: url(../img/play-hover.png);
+ 		.background-mix;
  	}
  }
  /*
@@ -563,8 +565,28 @@ div.menu {
     article.age40-26{
     	width:100%;
     	div.full_block{
-    		height: 300px;
+    		height: 0;
     		position: relative;
+    		padding-bottom: 23.9%;
+
+    		.title-age{
+    			position:absolute;
+    			text-align:center;
+    			width:100%;
+    			top: 37px;
+    			font-family: 'Akrobat-Light', sans-serif;
+    			font-size: 30px;
+    			color: #FFFFFF;
+    			z-index:5;
+
+    			span{
+    				background:@rose;
+    				font-family: 'Akrobat-Bold', sans-serif;
+    				padding: 0px 7px 2px;
+    				line-height: 30px;
+    				display: inline-block;
+    			}
+    		}
     	}
     	.half-block{
     		width:50%;
@@ -574,22 +596,27 @@ div.menu {
     		position:absolute;
     	}
     	.half-block.age26{
-    		background:#000;
+    		background: url("../img/age40.jpg");
+    		.background-mix;
+    		background-position:center left;
     		width:50%;
     		z-index: 3;
     	}
     	.half-block.age40{
-    		background:#ddd;
+    		background: url("../img/age26.jpg");
+    		.background-mix;
+    		background-position:center right;
     		width: 100%;
     	}
     	.age_slider{
     		position: absolute;
-    		width:30px;
-    		height:30px;
+    		width:93px;
+    		height:33px;
     		border-radius:30px;
-    		left: calc(100% - 15px);
-    		top: calc(50% - 15px);
-    		background:#FFF;
+    		left: calc(100% - 46px);
+    		top: calc(50% - 16px);
+    		background: url("../img/ageslider.png");
+    		.background-mix;
     		z-index:4;
     		&:hover{
     			cursor:move;
@@ -623,6 +650,7 @@ div.menu {
     		top: calc(50% - 9.5vw);
     		left: calc(50% - 9.5vw);
     	}
+
     	.fadevideo{
     		display:none;
     	}
