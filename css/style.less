@@ -264,12 +264,27 @@ Variables
 	}
 } //owl-dots
 body > header{
+	position:relative;
 	background: url(../img/top-banner.jpg);
 	.background-mix;
 	//height: 600px;
 	height:0;
 	background-position:top center;
 	padding-bottom: 35%;
+	.top-16{
+		position: absolute;
+		bottom: 20px;
+		right: 5vw;
+		font-family: Roboto;
+		font-weight: 900;
+		font-size: 20px;
+		color: #333;
+		line-height: 20px;
+		padding: 0 3px;
+		background: #FFFFFF;
+		border-radius: 2px;
+		opacity: 0.3;
+	}
 	@media (min-width: @l_mobile + 1) and (max-width: @tablet){
 		height: 580px;
 		padding:0;
