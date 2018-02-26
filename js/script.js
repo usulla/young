@@ -1,3 +1,7 @@
+var click = ('ontouchstart' in window) ? 'touchstart' : 'click';
+var mousemove = ('ontouchmove' in window) ? 'touchmove' : 'mousemove';
+var mousedown = ('ontouchstart' in window) ? 'touchstart' : 'mousedown';
+var mouseup = ('ontouchend' in window) ? 'touchend' : 'mouseup';
 document.addEventListener("DOMContentLoaded", function(){
 	/* Owl-carousel */
 	$('.owl-carousel').owlCarousel({
@@ -10,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function(){
 	});
 
 	/* Mobile menu */
-	if( 'ontouchstart' in window ){ var click = 'touchstart'; }
-	else { var click = 'click'; }
 
 	$('div.burger').on(click, function(){
 		console.log(444);
@@ -77,7 +79,7 @@ window.onload = function() {
 	console.log(heightHeader, heightBannerText, marginTopBannerText);
 	document.querySelector('.top-banner_text').style.marginTop = marginTopBannerText + 'px';
 	// Show text-topbanner
-   $('.top-banner_text').fadeTo( "slow" , 1);
+	$('.top-banner_text').fadeTo( "slow" , 1);
 
 /* 
 Перетаскивание в блоке с возрастом
@@ -86,15 +88,20 @@ var ageBlock26 = document.querySelector('.age26');
 var ageSlider = document.querySelector('.age_slider');
 var delta_w = 0; // Изменение блока возраста26 по ширине
 
-ageSlider.addEventListener("mousedown", saveWH); // Ставим обработку на нажатие кнопки мыши
-document.addEventListener("mouseup", clearXY);  // Ставим обработку на отпускание кнопки мыши
+ageSlider.addEventListener(mousedown, saveWH); // Ставим обработку на нажатие кнопки мыши
+document.addEventListener(mouseup, clearXY);  // Ставим обработку на отпускание кнопки мыши
 
 /* Функция для получения текущих координат курсора мыши */
 function getXY(event) {
-	if (event) {
+
+	if(event.type == 'touchstart' || event.type == 'touchmove' || event.type == 'touchend' || event.type == 'touchcancel'){
+	//	var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
+	    var touch = event.touches[0] || event.changedTouches[0];
+		x = touch.pageX;
+		y = touch.pageY;
+	} else if (event.type == 'mousedown' || event.type == 'mouseup' || event.type == 'mousemove' || event.type == 'mouseover'|| event.type=='mouseout' || event.type=='mouseenter' || event.type=='mouseleave') {
 		x = event.pageX;
 		y = event.pageY;
-		console.log(x, y, 'getXY');
 	}
 	else {
 		x = window.event.clientX;
@@ -112,7 +119,7 @@ function saveWH(event) {
     console.log(delta_w, 'Дельта');  
 
    //Ставим обработку движения мыши для разных браузеров 
-   document.addEventListener("mousemove", resizeBlock);
+   document.addEventListener(mousemove, resizeBlock);
     return false; // Отключаем стандартную обработку нажатия мыши 
 }
 /* Функция для измерения ширины окна */
@@ -131,7 +138,7 @@ function resizeBlock(event) {
 
 // При отпускании кнопки мыши отключаем обработку движения курсора мыши 
 function clearXY(event){
-	document.removeEventListener("mousemove", resizeBlock);
+	document.removeEventListener(mousemove, resizeBlock);
 }
 //Перетаскивание в блоке с возрастом
 

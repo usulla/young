@@ -616,9 +616,9 @@ div.menu {
     /* About serials*/
     article.about-serial {
     	height: 0;
-    	padding-bottom: 57%;
+    	padding-bottom: 56%;
     	width: 100%;
-    	display: inline-block;
+    	overflow: hidden;
 
     	.about-serial__info {
     		width: 50%;
@@ -638,7 +638,8 @@ div.menu {
     	.about-serial__carousel{
     		position:relative; 
     		width: 50%;
-    		display: inline-block; 
+    		display: block; 
+    		float: right;
  			         } //about-serial__carousel
 
  			         @media (max-width: @l_mobile) {
