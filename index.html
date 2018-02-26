@@ -88,12 +88,17 @@
 	<article class="video" id="video">
 		<div class="preview">
 		</div>
-		<span class="play"></span>
+		<span class="play" @click="playvideo"></span>
 	</article>
 
 	<article class="about-serial">
 		<div class="about-serial__info">
-			<img src="img/about-info.png" alt="">
+			<!--<img src="img/about-info.png" alt="">-->
+			<header class="pomada">О сериале</header>
+			<div class="about_title">От создателей <span class="rose">«Секса в большом городе»</span></div>
+			<p>
+				В центре истории оказывается сорокалетняя Лиза (дважды лауреат премии «Тони» Саттон Фостер) – разведенная мать-одиночка, которая вынуждена снова искать работу. После нескольких неудачных попыток она понимает, что причина бесконечных отказов – ее возраст. Случайное знакомство с молодым Джошем (Нико Торторелла) убеждает Лизу, что она выглядит гораздо моложе своих лет, и у неё созревает план. Подруга Мэгги (Деби Мейзар) помогает ей преобразиться и выдать себя за 26-летнюю. Вооруженная «новой личностью» Лиза тут же получает работу ассистента в престижной компании. И теперь, вместе со своей новой коллегой Келси (Хилари Дафф), Лиза попытается создать жизнь и карьеру своей мечты.
+			</p>
 		</div>
 
 		<div class="about-serial__carousel owl-carousel">
@@ -183,6 +188,24 @@
 						},
 						isrc:function (event) {
 							return this.isrc2;
+						}
+					}
+				})
+				/* Video Show and autoplay*/
+				new Vue({
+					el: '#video',
+					methods: {
+						playvideo:  function (event) {
+							document.querySelector('#video .preview').classList.add("fadevideo");
+							document.querySelector('#video .play').classList.add("fadevideo");
+							document.querySelector('#video').innerHTML ='<iframe id="player0" src="https://rutube.ru/play/embed/10934936" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">';
+							var iframeVideo1 = document.getElementById("player0");
+							iframeVideo1.onload = function() {
+								iframeVideo1.contentWindow.postMessage(JSON.stringify({
+									type: 'player:play',
+									data: {}
+								}), '*');
+							};
 						}
 					}
 				})

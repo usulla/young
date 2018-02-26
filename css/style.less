@@ -91,6 +91,7 @@ Variables
  .pomada{
  	background:url("../img/pomada.png");
  	.background-mix;
+ 	background-size:100%;
  	text-transform: uppercase;
  	font-family: 'Akrobat-Regular', sans-serif;
  	font-size: 40px;
@@ -102,7 +103,7 @@ Variables
  	line-height:84px;
  	margin: 0 auto;
 
- 	@media (max-width: @l_mobile) {
+ 	@media (max-width: @tablet) {
  		font-size: 30px;
  		width: 300px;
  		height: 74px;
@@ -110,6 +111,10 @@ Variables
  		max-height: 74px;
  		line-height:74px;
  	}
+ 	@media (max-width: @l_mobile) {
+ 		max-width: 100%;
+ 	}
+
  }
  .mix-play{
  	display: inline-block;
@@ -592,12 +597,18 @@ div.menu {
     	}
     }
     article.video{
-    	position:relative; 
+    	position:relative;
     	padding-bottom: 56.25%; 
     	height: 0;
-    	background: url("../img/preview.jpg");
-    	.background-mix;
 
+    	.preview{
+    		background: url("../img/preview.jpg");
+    		.background-mix;
+    		position: relative;
+    		padding-bottom: 56.25%;
+    		height: 0;
+    		width: 100%;
+    	}
     	iframe{
     		position:absolute; 
     		top:0;
@@ -612,6 +623,9 @@ div.menu {
     		top: calc(50% - 9.5vw);
     		left: calc(50% - 9.5vw);
     	}
+    	.fadevideo{
+    		display:none;
+    	}
     }
     /* About serials*/
     article.about-serial {
@@ -619,11 +633,62 @@ div.menu {
     	padding-bottom: 56%;
     	width: 100%;
     	overflow: hidden;
+    	@media (max-width: @l_mobile) {
+    		height: 100%;
+    		padding-bottom: 0;
+    	}
 
     	.about-serial__info {
-    		width: 50%;
+    		width: 45%;
     		float: left;
     		text-align: center;
+    		margin-left: 2.5%;
+    		padding-top:76px;
+    		@media (max-width: @l_mobile) {
+    			padding-top:26px;
+    			width: 80vw!important;
+    			margin-left:10vw;
+    		}
+    		@media (min-width: @l_mobile) and (max-width: @s_desktop) {
+    			padding-top:10px;
+    		}
+    		
+
+    		.about_title{
+    			padding-top: 36px;
+    			color: #000;
+    			text-transform:uppercase;
+    			font-family: 'Akrobat-Regular', sans-serif;
+    			font-size: 32px;
+    			text-align: center;
+    			span{
+    				color:@rose;
+    			}
+    			@media (max-width: @tablet) {
+    				font-size: 22px;
+    				padding-top: 20px;
+    			}
+    			@media (min-width: @l_mobile) and (max-width: @s_desktop) {
+    				font-size: 19px;
+    			}
+    		}
+    		p{
+    			font-family: Roboto;
+    			font-style: normal;
+    			font-weight: 300;
+    			line-height: 30px;
+    			font-size: 18px;
+    			text-align: justify;
+    			@media (max-width: @tablet) {
+    				font-size: 14px;
+    				line-height: 20px;
+    			}
+    			@media (min-width: @l_mobile) and (max-width: @s_desktop) {
+    				line-height: 20px;
+    				font-size: 14px;
+    				margin-bottom: 0;
+    			}
+    		}
     	}
     	.about-serial__info img{
     		width: 85%;
