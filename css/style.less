@@ -573,11 +573,16 @@ div.menu {
     			position:absolute;
     			text-align:center;
     			width:100%;
-    			top: 37px;
+    			top: 20px;
     			font-family: 'Akrobat-Light', sans-serif;
     			font-size: 30px;
     			color: #FFFFFF;
     			z-index:5;
+
+    			@media (max-width: @l_mobile) {
+    				font-size: 18px;
+    				top: 2px;
+    			}
 
     			span{
     				background:@rose;
@@ -585,41 +590,47 @@ div.menu {
     				padding: 0px 7px 2px;
     				line-height: 30px;
     				display: inline-block;
+
+    				@media (max-width: @l_mobile) {
+    					line-height: 22px;
+    					padding: 0px 7px 3px;
+    				}
     			}
     		}
-    	}
-    	.half-block{
-    		width:50%;
-    		height:100%;
-    		display:inline-block;
-    		float:left;
-    		position:absolute;
-    	}
-    	.half-block.age26{
-    		background: url("../img/age40.jpg");
-    		.background-mix;
-    		background-position:center left;
-    		width:50%;
-    		z-index: 3;
-    	}
-    	.half-block.age40{
-    		background: url("../img/age26.jpg");
-    		.background-mix;
-    		background-position:center right;
-    		width: 100%;
-    	}
-    	.age_slider{
-    		position: absolute;
-    		width:93px;
-    		height:33px;
-    		border-radius:30px;
-    		left: calc(100% - 46px);
-    		top: calc(50% - 16px);
-    		background: url("../img/ageslider.png");
-    		.background-mix;
-    		z-index:4;
-    		&:hover{
-    			cursor:move;
+
+    		.half-block{
+    			width:50%;
+    			height:100%;
+    			display:inline-block;
+    			float:left;
+    			position:absolute;
+    		}
+    		.half-block.age26{
+    			background: url("../img/age40.jpg");
+    			.background-mix;
+    			background-position:center left;
+    			width:50%;
+    			z-index: 3;
+    		}
+    		.half-block.age40{
+    			background: url("../img/age26.jpg");
+    			.background-mix;
+    			background-position:center right;
+    			width: 100%;
+    		}
+    		.age_slider{
+    			position: absolute;
+    			width:93px;
+    			height:33px;
+    			border-radius:30px;
+    			left: calc(100% - 46px);
+    			top: calc(50% - 16px);
+    			background: url("../img/ageslider.png");
+    			.background-mix;
+    			z-index:4;
+    			&:hover{
+    				cursor:move;
+    			}
     		}
     	}
     }
@@ -680,7 +691,7 @@ div.menu {
     		@media (min-width: @l_mobile) and (max-width: @s_desktop) {
     			padding-top:10px;
     		}
-    		
+
 
     		.about_title{
     			padding-top: 36px;
@@ -984,11 +995,118 @@ div.menu {
  				}
 
  				.voting_result{
- 					background:@rose;
- 					height:500px;
- 					width:100%;
+ 					//background:@rose;
+ 					height: auto;
+ 					margin: 0 auto;
+
+ 					.first_voted{
+ 						width: 85vw;
+ 						max-width: 850px;
+ 						margin: 0 auto;
+ 					}
+ 					.second_voted{
+ 						background:@rose;
+ 						color:#fff;
+ 						text-align:center;
+ 						img.hand_icon{
+ 							width: 12vw;
+ 						}
+ 						span.attention{
+ 							font-family: Akrobat-Light;
+ 							font-size: 42px;
+ 							text-transform: uppercase;
+ 							color: #FFFFFF;
+ 							display: block;
+
+ 							span.a-bold {
+ 								font-weight:600;
+ 							}
+
+ 							@media (max-width: @l_mobile) {
+ 								font-size: 30px;
+ 							}
+ 						}
+ 						button{
+ 							background: rgba(255, 255, 255, 0.2);
+ 							border-radius: 35px;
+ 							height:60px;
+ 							width:214px;
+ 							color:#fff;
+ 							font-family: Roboto;
+ 							font-weight: bold;
+ 							line-height: 30px;
+ 							font-size: 20px;
+ 							border: 0;
+ 							margin-top:60px;
+ 							&:hover{
+ 								cursor:pointer;
+ 								background: rgba(255, 255, 255, 0.3);
+ 							}
+ 						}
+ 					}
+ 					.voting_1_2{
+ 						width:100%;
+ 						.voting_1{
+ 							margin-bottom:30px;
+ 						}
+ 						.voting_1 span.name_member, .voting_2 span.name_member{
+ 							font-family: Roboto;
+ 							font-weight: 900;
+ 							line-height: 64px;
+ 							font-size: 24px;
+ 							text-align: left;
+ 							color: #FFFFFF;
+ 							display: block;
+ 							@media (max-width: @l_mobile) {
+ 								font-size: 20px;
+ 							}
+ 							span.rose{
+ 								color:@rose;
+ 							}
+ 						}
+ 						.voted{
+ 							font-family: Roboto;
+ 							font-weight: 900;
+ 							line-height: 27px;
+ 							font-size: 18px;
+ 							color: #FFFFFF;
+ 							float: left;
+ 							margin-top: 30px;
+ 						}
+ 						.voting_line{
+ 							width: 80%;
+ 							display: inline-block;
+ 							background: rgba(255, 255, 255, 0.1);
+ 							float: left;
+ 							@media (min-width: @tablet) {
+ 								width: 90%;
+ 							}
+ 							.rating{
+ 								background:@rose;
+ 								width: 20%;
+ 								height: 30px;
+ 								display: block;
+ 								font-family: Roboto;
+ 								font-weight: 900;
+ 								line-height: 27px;
+ 								font-size: 18px;
+ 								text-align: center;
+ 								color: #FFFFFF;
+ 							}
+ 						}
+ 						.proc{
+ 							font-family: Roboto;
+ 							font-weight: 900;
+ 							line-height: 30px;
+ 							font-size: 24px;
+ 							text-align: left;
+ 							color: #FFFFFF;
+ 							padding-left: 2%;
+ 						}
+ 					}
  			    }//.voting_result
  			} // article.voting
+
  			footer{
  				background:@brown;
  				padding-bottom: 10vw;

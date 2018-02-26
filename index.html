@@ -74,7 +74,7 @@
 
 	<article class="age40-26">
 		<div class="full_block">
-		<div class="title-age">Знакомьтесь это <span>Лиза</span></div>
+			<div class="title-age">Знакомьтесь это <span>Лиза</span></div>
 			<div class="half-block age26">
 				<!--<img src="img/gg.png">-->
 				<div class="age_slider">
@@ -261,21 +261,45 @@
 
 			<div class="vs_logo desktop"><img src="img/vs_logo.png"></div>
 		</div> <!-- Voting first block -->
+	</div> <!-- content -->
 
-		<transition name="voting">
-			<div class="voting_result" v-if="showResult">
+	<transition name="voting">
+		<div class="voting_result" v-if="showResult">
+			<div class="content">
+				<div class="first_voted">
+					<div class="voting_1_2">
+						<div class="voting_1">
+							<span class="name_member">1. Команда <span class="rose">#</span>Джош</span>
+							<div class="voting_line"><span class="rating">102</span></div>
+							<span class="proc">70%</span>
+						</div>
+						<div class="voting_2">
+							<span class="name_member">2. Команда <span class="rose">#</span>Чарльз</span>
+							<div class="voting_line"><span class="rating">27</span></div>
+							<span class="proc">22%</span>
+						</div>
+						<span class="voted">проголосовали: 150 человек</span>
+					</div>
+				</div>
 			</div>
-		</transition>
-		<script>
-			var seenVoting = new Vue({
-				el: '.voting',
-				data: {
-					showVoting: true,
-					showResult: false
-				}
-			})
-		</script>
-	</div>
+			<div class="second_voted">
+				<img class="hand_icon" src="img/five.png">
+				<span class="attention"><span class="a-bold">Внимание!</span> вы уже проголосовали.</span>
+				<button v-on:click="showResult = false, showVoting = true">Закрыть</button>
+			</div>
+
+		</div>
+	</transition>
+	<script>
+		var seenVoting = new Vue({
+			el: '.voting',
+			data: {
+				showVoting: true,
+				showResult: false
+			}
+		})
+	</script>
+</div>
 </article>
 
 <footer>
