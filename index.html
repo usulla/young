@@ -111,100 +111,155 @@
 			</p>
 			<header class="pomada">Серии</header>
 			<div class="serials_content content">
-				<div class="serials_item">
-					<div class="preview"><img src="img/preview.jpg"></div>
-					<span class="title">Серия 1</span>
-					<span class="play"></span>
-				</div>
-				<div class="serials_item">
-					<div class="preview"><img src="img/preview.jpg"></div>
-					<span class="title">Серия 2</span>
-					<span class="play"></span>
-				</div>
-				<div class="serials_item">
-					<div class="preview"><img src="img/preview.jpg"></div>
-					<span class="title">Серия 3</span>
-					<span class="play"></span>
-				</div>
-				<div class="serials_item">
-					<div class="preview"><img src="img/preview.jpg"></div>
-					<span class="title">Серия 4</span>
-					<span class="play"></span>
+				<div id="app">
+					<!-- template for the modal component -->
+					<script type="text/x-template" id="modal-template">
+						<transition name="modal">
+							<div class="modal-mask">
+								<div class="modal-wrapper">
+									<div class="modal-container">
+										<div class="modal-body" style="position:relative; padding-bottom: 56.25%;  height: 0;">
+											<!--<iframe id="player1" v-bind:src="isrc" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>-->
+											<iframe style="position:absolute; top:0;left:0;width:100%;height:100%;" id="player1" src="https://rutube.ru/play/embed/10934936" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+										</div>
+										<button class="modal-default-button" @click="$emit('close')">
+											×
+										</button>
+									</div>
+								</div>
+							</div>
+						</transition>
+					</script>	<!-- template for the modal component -->
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 1</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10934936" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 2</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10906069" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 3</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10934936" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 4</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10906069" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<modal v-if="showModal" @close="showModal = false">
+					</modal>
 				</div>
 			</div>
-		</div>
-	</article>
-
-	<article class="heroes">
-		<!--<div class="heroes__row">
-			<div class="heroes__col"><img src="img/heroes1.png"></div>
-			<div class="heroes__col"></div>
-		</div>-->
-		<div class="desktop block-image content">
-			<img src="img/heroes.png">
-		</div>
-		<div class="mobile heroes-carousel owl-carousel">
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-		</div>
-	</article>
-
-	<article class="voting">
-		<div class="content">
-			<header class="pomada">Голосование</header>
-			<p>Лиза не может определиться, кто больше ей подходит - эксцентричный <b>Джош</b> или сдержанный <b>Чарльз</b>. Нам выбор кажется очевидным.</p>
-
-			<!-- Voting first block -->
-			
-			<div class="voting_items" v-if="showVoting">
-				<div class="voting_item">
-					<div class="image_block">
-						<button v-on:click="showVoting = false, showResult = true"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
-						<img src="img/voting1.jpg">
-					</div>
-					<div class="title_member">Команда<span class="rose"> #</span>Джош</div>
-				</div>
-
-				<div class="vs_logo mobile"><img src="img/vs_logo.png"></div>
-
-				<div class="voting_item">
-					<div class="image_block">
-						<button v-on:click="showResult = true, showVoting = false"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
-						<img src="img/voting2.jpg">
-					</div>
-					<div class="title_member">Команда<span class="rose"> #</span>Чарльз</div>
-				</div>
-
-				<div class="vs_logo desktop"><img src="img/vs_logo.png"></div>
-			</div> <!-- Voting first block -->
-
-			<transition name="voting">
-				<div class="voting_result" v-if="showResult">
-				</div>
-			</transition>
 			<script>
-				var seenVoting = new Vue({
-					el: '.voting',
+
+				Vue.component('modal', {
+					template: '#modal-template'
+				})
+				new Vue({
+					el: '#app',
 					data: {
-						showVoting: true,
-						showResult: false
+						showModal: false,
+						isrc: 'eee'
+					},
+					methods: {
+					/*	load:function () {
+							var iframeVideo = document.getElementById("player1");
+							console.log(3)
+							iframeVideo.onload = function() {
+								iframeVideo.contentWindow.postMessage(JSON.stringify({
+									type: 'player:play',
+									data: {}
+								}), '*');
+							};
+						}, */
+						getDataSrc: function (event) {
+							element = event.currentTarget;
+							src = element.getAttribute('data-src');
+							this.isrc2 = src;
+						},
+						isrc:function (event) {
+							return this.isrc2;
+						}
 					}
 				})
 			</script>
 		</div>
 	</article>
 
-	<footer>
-		<div class="center">
-			<a class="logo" href="http://superkanal.ru" target="_blank">супер<img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"></a>
-			<span>@ 2018. Все права защищены</span>
-		</div>
-	</footer>
+	<article class="heroes">
+		<!--<div class="heroes__row">
+		<div class="heroes__col"><img src="img/heroes1.png"></div>
+		<div class="heroes__col"></div>
+	</div>-->
+	<div class="desktop block-image content">
+		<img src="img/heroes.png">
+	</div>
+	<div class="mobile heroes-carousel owl-carousel">
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+	</div>
+</article>
+
+<article class="voting">
+	<div class="content">
+		<header class="pomada">Голосование</header>
+		<p>Лиза не может определиться, кто больше ей подходит - эксцентричный <b>Джош</b> или сдержанный <b>Чарльз</b>. Нам выбор кажется очевидным.</p>
+
+		<!-- Voting first block -->
+
+		<div class="voting_items" v-if="showVoting">
+			<div class="voting_item">
+				<div class="image_block">
+					<button v-on:click="showVoting = false, showResult = true"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
+					<img src="img/voting1.jpg">
+				</div>
+				<div class="title_member">Команда<span class="rose"> #</span>Джош</div>
+			</div>
+
+			<div class="vs_logo mobile"><img src="img/vs_logo.png"></div>
+
+			<div class="voting_item">
+				<div class="image_block">
+					<button v-on:click="showResult = true, showVoting = false"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
+					<img src="img/voting2.jpg">
+				</div>
+				<div class="title_member">Команда<span class="rose"> #</span>Чарльз</div>
+			</div>
+
+			<div class="vs_logo desktop"><img src="img/vs_logo.png"></div>
+		</div> <!-- Voting first block -->
+
+		<transition name="voting">
+			<div class="voting_result" v-if="showResult">
+			</div>
+		</transition>
+		<script>
+			var seenVoting = new Vue({
+				el: '.voting',
+				data: {
+					showVoting: true,
+					showResult: false
+				}
+			})
+		</script>
+	</div>
+</article>
+
+<footer>
+	<div class="center">
+		<a class="logo" href="http://superkanal.ru" target="_blank">супер<img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"></a>
+		<span>@ 2018. Все права защищены</span>
+	</div>
+</footer>
 
 </body>
 </html>
