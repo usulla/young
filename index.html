@@ -206,7 +206,7 @@
 						playvideo:  function (event) {
 							document.querySelector('#video .preview').classList.add("fadevideo");
 							document.querySelector('#video .play').classList.add("fadevideo");
-							document.querySelector('#video').innerHTML ='<iframe id="player0" src="https://rutube.ru/play/embed/10934936" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">';
+							document.querySelector('#video').innerHTML ='<iframe id="player0" src="//rutube.ru/play/embed/10934936" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">';
 							var iframeVideo1 = document.getElementById("player0");
 							iframeVideo1.onload = function() {
 								iframeVideo1.contentWindow.postMessage(JSON.stringify({
@@ -227,7 +227,8 @@
 		<div class="heroes__col"></div>
 	</div>-->
 	<div class="desktop block-image content">
-		<img src="img/heroes.png">
+		<img src="img/heroes1.png">
+		<img src="img/heroes2.jpg" style="margin-top: -5px;">
 	</div>
 	<div class="mobile heroes-carousel owl-carousel">
 		<div><img src="img/mob-heroes.png"></div>
