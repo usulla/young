@@ -357,10 +357,11 @@ body > header{
     	-o-transition: all 200ms ease-out;
     	transition: all 200ms ease-out;
     }		
-    div.x, div.y, div.z { height: 3px; width: 26px; }
-    div.y{top: 18px;}
-    div.z{top: 37px;}
+    div.x, div.y, div.z { height: 3px; width: 20px; }
+    div.y{top: 18px;width: 31px;}
+    div.z{top: 37px;width: 27px;}
     div.collapse{
+    	width:26px;
     	top: 20px;
     	background:@white;
     	-webkit-transition: all 70ms ease-out;
@@ -677,6 +678,7 @@ div.menu {
     		height: 19vw;
     		top: calc(50% - 9.5vw);
     		left: calc(50% - 9.5vw);
+    		.transition;
     	}
 
     	.fadevideo{
@@ -689,6 +691,8 @@ div.menu {
     	padding-bottom: 56%;
     	width: 100%;
     	overflow: hidden;
+    	margin-bottom: -9px; 
+
     	@media (max-width: @l_mobile) {
     		height: 100%;
     		padding-bottom: 0;
@@ -807,6 +811,7 @@ div.menu {
  					height: 9vw;
  					top: calc(50% - 4.5vw);
  					left: calc(50% - 4.5vw);
+ 					.transition;
  				}
  				.serials_item > .title{
  					.font-style;

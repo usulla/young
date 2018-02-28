@@ -96,18 +96,18 @@ function getXY(event) {
 
 	if(event.type == 'touchstart' || event.type == 'touchmove' || event.type == 'touchend' || event.type == 'touchcancel'){
 	//	var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
-	    var touch = event.touches[0] || event.changedTouches[0];
-		x = touch.pageX;
-		y = touch.pageY;
-	} else if (event.type == 'mousedown' || event.type == 'mouseup' || event.type == 'mousemove' || event.type == 'mouseover'|| event.type=='mouseout' || event.type=='mouseenter' || event.type=='mouseleave') {
-		x = event.pageX;
-		y = event.pageY;
-	}
-	else {
-		x = window.event.clientX;
-		y = window.event.clientY;
-	}
-	return new Array(x, y);
+	var touch = event.touches[0] || event.changedTouches[0];
+	x = touch.pageX;
+	y = touch.pageY;
+} else if (event.type == 'mousedown' || event.type == 'mouseup' || event.type == 'mousemove' || event.type == 'mouseover'|| event.type=='mouseout' || event.type=='mouseenter' || event.type=='mouseleave') {
+	x = event.pageX;
+	y = event.pageY;
+}
+else {
+	x = window.event.clientX;
+	y = window.event.clientY;
+}
+return new Array(x, y);
 }
 
 function saveWH(event) {
@@ -143,6 +143,37 @@ function clearXY(event){
 //Перетаскивание в блоке с возрастом
 
 }; // window.onload
+
+var dataMember;
+$(document).on('click', '.voting_item button', function(){
+	 dataMember = $(this).parents('.voting_item').index(0) ? 0 : 1;
+
+	$.ajax({
+		type: 'POST',
+		url: '/',
+		data: dataMember,
+		success: function(data) {
+			if (data.result == 0) {
+				window.location = "/site-users/register?success=true";
+			}
+			else {
+				if($("#registr-form > div").hasClass("alert-danger")){
+					$(".alert.alert-danger").remove();
+				}
+				for (var prop in data.data) {
+					$(".cd-user-modal #registr-form").prepend('<div class="alert alert-danger">' + data.data[prop] + '</div>');
+				}
+
+			}
+		},
+		error:  function(xhr, str){
+                  //  alert('Возникла ошибка: ' + xhr.responseCode);
+                  //  $(".cd-user-modal #login-form").prepend("<div class='alert alert-danger'> Проверьте правильность введенных данных </div>");
+              }
+          });
+});
+
+
 
 
 
