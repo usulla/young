@@ -146,15 +146,15 @@ function clearXY(event){
 
 var dataMember;
 $(document).on('click', '.voting_item button', function(){
-	 dataMember = $(this).parents('.voting_item').index(0) ? 0 : 1;
+	 dataMember = $(this).parents('.voting_item').index(0) ? 10 : 01;
 
 	$.ajax({
 		type: 'POST',
-		url: '/',
+		url: '/vote',
 		data: dataMember,
 		success: function(data) {
-			if (data.result == 0) {
-				window.location = "/site-users/register?success=true";
+			if (data.result == 1) {
+			
 			}
 			else {
 				if($("#registr-form > div").hasClass("alert-danger")){
