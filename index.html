@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,39 +12,92 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js" ></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
-
 <body>
-	<header>
+	<header class="header_top">
 		<nav>
+			<div class="content">
+				<div class="socials desktop">
+					<a href="https://vk.com/superkanal" target="_blank" class="social vk"></a>
+					<a href="https://www.facebook.com/tvsuper/" target="_blank" class="social fb"></a>
+					<a href="https://ok.ru/superkanal" target="_blank" class="social ok"></a>
+					<a href="https://www.instagram.com/super_kanal/" target="_blank" class="social in"></a>
+				</div>
+				<ul class="desktop">
+					<li><a href="#video">Трейлер</a></li>
+					<li><a href="#about-serial">О сериале</a></li>
+					<li><a href="#serials">Серии</a></li>
+					<li><a href="#heroes">Герои</a></li>
+					<li><a href="#voting">Голосование</a></li>
+				</ul>
+				<a class="logo" href="http://superkanal.ru" target="_blank">супер<img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"></a>
+			</div>
+		</nav>
+		<div class="top-banner_text">
+			<img src="img/top-banner-text.png">
+		</div>
+		<span class="top-16">16+</span>
+
+		<!-- Burger Menu -->
+		<div class="mobile">
+			<div class="burger">
+				<div class="x"></div>
+				<div class="y"></div>
+				<div class="z"></div>
+			</div>
+		</div> <!-- Burger Menu -->
+	</header>
+
+	<!-- Mobile Menu -->
+	<div class="mobile">
+		<div class="circle"></div>
+		<div class="menu">
+			<ul>
+				<li><a href="#video">Трейлер</a></li>
+				<li><a href="#about-serial">О сериале</a></li>
+				<li><a href="#serials">Серии</a></li>
+				<li><a href="#heroes">Герои</a></li>
+				<li><a href="#voting">Голосование</a></li>
+			</ul>
 			<div class="socials">
 				<a href="https://vk.com/superkanal" target="_blank" class="social vk"></a>
 				<a href="https://www.facebook.com/tvsuper/" target="_blank" class="social fb"></a>
 				<a href="https://ok.ru/superkanal" target="_blank" class="social ok"></a>
 				<a href="https://www.instagram.com/super_kanal/" target="_blank" class="social in"></a>
 			</div>
-			<ul>
-				<li><a href="#video">Трейлер</a></li>
-				<li><a href="#video">О сериале</a></li>
-				<li><a href="#serials">Серии</a></li>
-				<li><a href="#heroes">Герои</a></li>
-				<li><a href="#voting">Голосование</a></li>
-			</ul>
-			<a class="logo" href="/">супер<img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"></a>
-		</nav>
-	</header>
+		</div>
+
+	</div>	<!-- Mobile Menu -->
+
 	<article class="age40-26">
+		<div class="full_block">
+			<div class="title-age">Знакомьтесь это <span>Лиза</span></div>
+			<div class="half-block age26">
+				<!--<img src="img/gg.png">-->
+				<div class="age_slider">
+				</div>
+			</div>
+			<div class="half-block age40">
+				<!--<img src="img/gg.png">-->
+			</div>
+		</div>
 	</article>
 
-	<article class="video">
+	<article class="video" id="video">
 		<div class="preview">
 		</div>
-		<span class="play"></span>
+		<span class="play" @click="playvideo"></span>
 	</article>
 
 	<article class="about-serial">
 		<div class="about-serial__info">
-			<img src="img/about-info.png" alt="">
+			<!--<img src="img/about-info.png" alt="">-->
+			<header class="pomada">О сериале</header>
+			<div class="about_title">От создателей <span class="rose">«Секса в большом городе»</span></div>
+			<p>
+				В центре истории оказывается сорокалетняя Лиза (дважды лауреат премии «Тони» Саттон Фостер) – разведенная мать-одиночка, которая вынуждена снова искать работу. После нескольких неудачных попыток она понимает, что причина бесконечных отказов – ее возраст. Случайное знакомство с молодым Джошем (Нико Торторелла) убеждает Лизу, что она выглядит гораздо моложе своих лет, и у неё созревает план. Подруга Мэгги (Деби Мейзар) помогает ей преобразиться и выдать себя за 26-летнюю. Вооруженная «новой личностью» Лиза тут же получает работу ассистента в престижной компании. И теперь, вместе со своей новой коллегой Келси (Хилари Дафф), Лиза попытается создать жизнь и карьеру своей мечты.
+			</p>
 		</div>
 
 		<div class="about-serial__carousel owl-carousel">
@@ -58,57 +110,212 @@
 	</article>
 
 	<article class="serials">
-		<p>Смотрите первый сезон киносериала "Юная" с 20 марта с понедельника по четверг в  <b>22:00</b> на <b>супер!</b>
-		</p>
-		<header class="pomada">Серии</header>
-		<div class="serials_content content">
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 1</span>
-				<span class="play"></span>
+		<div class="content">
+			<p>Смотрите первый сезон киносериала "Юная" с 20 марта с понедельника по четверг в  <b>22:00</b> на <b>супер!</b>
+			</p>
+			<header class="pomada">Серии</header>
+			<div class="serials_content content">
+				<div id="app">
+					<!-- template for the modal component -->
+					<script type="text/x-template" id="modal-template">
+						<transition name="modal">
+							<div class="modal-mask">
+								<div class="modal-wrapper">
+									<div class="modal-container">
+										<div class="modal-body" style="position:relative; padding-bottom: 56.25%;  height: 0;">
+											<iframe style="position:absolute; top:0;left:0;width:100%;height:100%;" id="player1" src="" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+										</div>
+										<button class="modal-default-button" @click="$emit('close')">
+											×
+										</button>
+									</div>
+								</div>
+							</div>
+						</transition>
+					</script>	<!-- template for the modal component -->
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 1</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10934936" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 2</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10906069" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 3</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10934936" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<div class="serials_item">
+						<div class="preview"><img src="img/preview.jpg"></div>
+						<span class="title">Серия 4</span>
+						<span class="play" data-src="https://rutube.ru/play/embed/10906069" id="show-modal" @click="showModal = true, getDataSrc($event)"></span>
+					</div>
+					<modal v-if="showModal" @close="showModal = false">
+
+					</modal>
+				</div>
 			</div>
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 2</span>
-				<span class="play"></span>
-			</div>
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 3</span>
-				<span class="play"></span>
-			</div>
-			<div class="serials_item">
-				<div class="preview"><img src="img/preview.jpg"></div>
-				<span class="title">Серия 4</span>
-				<span class="play"></span>
-			</div>
+			<script>
+				var getSrc;
+				Vue.component('modal', {
+					template: '#modal-template'
+				})
+
+				new Vue({
+					el: '#app',
+					data: {
+						showModal: false
+					},
+					methods: {
+					/*	load:function () {
+							var iframeVideo = document.getElementById("player1");
+							console.log(3)
+							iframeVideo.onload = function() {
+								iframeVideo.contentWindow.postMessage(JSON.stringify({
+									type: 'player:play',
+									data: {}
+								}), '*');
+							};
+						}, */
+						getDataSrc: function (event) {
+							element = event.currentTarget;
+							getSrc = element.getAttribute('data-src');
+						}
+					},
+					watch: {
+						showModal:function (val, oldVal) {
+							if (val == true){
+								document.querySelector('#player1').addEventListener("load", function(){
+									document.querySelector('#player1').setAttribute('src', getSrc);
+									var ddd = document.querySelector('.').getAttribute('src') 
+									console.log(ddd);
+									console.log(getSrc, 'getSrc');
+									console.log('новое значение: %s, старое значение: %s', val, oldVal);
+								});
+							}
+						}
+					}
+				})
+				/* Video Show and autoplay*/
+				new Vue({
+					el: '#video',
+					methods: {
+						playvideo:  function (event) {
+							document.querySelector('#video .preview').classList.add("fadevideo");
+							document.querySelector('#video .play').classList.add("fadevideo");
+							document.querySelector('#video').innerHTML ='<iframe id="player0" src="//rutube.ru/play/embed/10934936" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">';
+							var iframeVideo1 = document.getElementById("player0");
+							iframeVideo1.onload = function() {
+								iframeVideo1.contentWindow.postMessage(JSON.stringify({
+									type: 'player:play',
+									data: {}
+								}), '*');
+							};
+						}
+					}
+				})
+			</script>
 		</div>
 	</article>
 
 	<article class="heroes">
 		<!--<div class="heroes__row">
-			<div class="heroes__col"><img src="img/heroes1.png"></div>
-			<div class="heroes__col"></div>
-		</div>-->
-		<div class="desctop block-image content">
-			<img src="img/heroes.png">
-		</div>
-		<div class="mobile heroes-carousel owl-carousel">
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-			<div><img src="img/mob-heroes.png"></div>
-		</div>
-	</article>
+		<div class="heroes__col"><img src="img/heroes1.png"></div>
+		<div class="heroes__col"></div>
+	</div>-->
+	<div class="desktop block-image content">
+		<img src="img/heroes1.png">
+		<img src="img/heroes2.jpg" style="margin-top: -5px;">
+	</div>
+	<div class="mobile heroes-carousel owl-carousel">
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+		<div><img src="img/mob-heroes.png"></div>
+	</div>
+</article>
 
-	<article class="voting">
-	</article>
+<article class="voting">
+	<div class="content">
+		<header class="pomada">Голосование</header>
+		<p>Лиза не может определиться, кто больше ей подходит - эксцентричный <b>Джош</b> или сдержанный <b>Чарльз</b>. Нам выбор кажется очевидным.</p>
 
-	<footer>
-	</footer>
+		<!-- Voting first block -->
+
+		<div class="voting_items" v-if="showVoting">
+			<div class="voting_item">
+				<div class="image_block">
+					<button v-on:click="showVoting = false, showResult = true"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
+					<img src="img/voting1.jpg">
+				</div>
+				<div class="title_member">Команда<span class="rose"> #</span>Джош</div>
+			</div>
+
+			<div class="vs_logo mobile"><img src="img/vs_logo.png"></div>
+
+			<div class="voting_item">
+				<div class="image_block">
+					<button v-on:click="showResult = true, showVoting = false"><img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"> <span>проголосовать</span></button>
+					<img src="img/voting2.jpg">
+				</div>
+				<div class="title_member">Команда<span class="rose"> #</span>Чарльз</div>
+			</div>
+
+			<div class="vs_logo desktop"><img src="img/vs_logo.png"></div>
+		</div> <!-- Voting first block -->
+	</div> <!-- content -->
+
+	<transition name="voting">
+		<div class="voting_result" v-if="showResult">
+			<div class="content">
+				<div class="first_voted">
+					<div class="voting_1_2">
+						<div class="voting_1">
+							<span class="name_member">1. Команда <span class="rose">#</span>Джош</span>
+							<div class="voting_line"><span class="rating">102</span></div>
+							<span class="proc">70%</span>
+						</div>
+						<div class="voting_2">
+							<span class="name_member">2. Команда <span class="rose">#</span>Чарльз</span>
+							<div class="voting_line"><span class="rating">27</span></div>
+							<span class="proc">22%</span>
+						</div>
+						<span class="voted">проголосовали: 150 человек</span>
+					</div>
+				</div>
+			</div>
+			<div class="second_voted">
+				<img class="hand_icon" src="img/five.png">
+				<span class="attention"><span class="a-bold">Внимание!</span> вы уже проголосовали.</span>
+				<button v-on:click="showResult = false, showVoting = true">Закрыть</button>
+			</div>
+
+		</div>
+	</transition>
+	<script>
+		var seenVoting = new Vue({
+			el: '.voting',
+			data: {
+				showVoting: true,
+				showResult: false
+			}
+		})
+	</script>
+</div>
+</article>
+
+<footer>
+	<div class="center">
+		<a class="logo" href="http://superkanal.ru" target="_blank">супер<img src="http://superkanal.ru/bin/images/cool2x-footer.png" alt="Супер"></a>
+		<span>@ 2018. Все права защищены</span>
+	</div>
+</footer>
 
 </body>
 </html>
